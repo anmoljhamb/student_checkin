@@ -6,6 +6,7 @@ import FormValidator from "../validators";
 
 const CheckInForm = ({ studentsState, studentsRef }) => {
     const [students, setStudents] = studentsState;
+    const [disabled, setDisabled] = useState(false);
 
     const initalForm = {
         name: "",
@@ -71,7 +72,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
         const formValidator = new FormValidator(tempForm, studentsRef.current);
         const expr = formValidator.validate(event.target.name);
 
-        console.log(expr);
+        setDisabled(!expr);
 
         if (!expr) {
             console.log("Invalid For ", event.target.id, event.target.name);
@@ -131,7 +132,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
                         onChange={handleOnChange}
                     />
                 ))}
-                <button>Submit</button>
+                <button disabled={disabled}>Submit</button>
             </form>
         </div>
     );

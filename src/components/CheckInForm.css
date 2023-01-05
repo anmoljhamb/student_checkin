@@ -32,7 +32,13 @@ form button {
     transition: var(--transition);
 }
 
-form button:hover {
+form button:disabled {
+    border-color: var(--teritary);
+    color: var(--teritary);
+    cursor: not-allowed;
+}
+
+form button:hover:enabled {
     border-radius: 4rem;
     background-color: var(--primary);
     color: var(--secondary);
