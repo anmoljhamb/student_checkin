@@ -9,6 +9,7 @@
     background-color: var(--secondary);
     font-size: 1.5rem;
     color: var(--primary);
+    overflow-y: auto;
 }
 
 .studentsList h3 {
