@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <CheckInForm studentsState={[students, setStudents]} />
             <CurrentTime />
-            {/* <StudentsList /> */}
+            <StudentsList students={students} />
         </div>
     );
 }

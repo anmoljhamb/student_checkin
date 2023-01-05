@@ -1,0 +1,45 @@
+.studentsList {
+    width: 35rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    padding: 1rem;
+    background-color: var(--secondary);
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.studentsList h3 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.studentsList .list {
+    margin-top: 2rem;
+}
+
+.list ul {
+    list-style: none;
+}
+
+.list .studentInfo {
+    padding: 1rem;
+    background-color: var(--teritary);
+    margin: 1rem;
+}
+
+.studentInfo div {
+    display: flex;
+    font-size: 1.8rem;
+}
+
+.studentInfo div p {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.studentInfo div > * {
+    flex-basis: 100%;
+}
