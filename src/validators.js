@@ -1,25 +1,36 @@
 class Validators {
-    constructor(form) {
+    constructor(form, students) {
+        this.students = students;
         this.form = form;
-        this.validators = {
-            name: this.validateName,
-            rollNumber: this.validateRollNumber,
-            checkInTime: this.validateCheckInTime,
-            checkOutTime: this.validateCheckOutTime,
-        };
     }
 
     validate(property) {
         console.log("validate", property);
-        return this.validators[property](this.form);
+        switch (property) {
+            case "name":
+                return this.validateName();
+            case "rollNumber":
+                // console.log("gotFunc", this.validateRollNumber());
+                return this.validateRollNumber();
+            default:
+                console.log(property);
+                return true;
+        }
     }
 
-    validateName(form) {
+    validateName() {
         const pattern = /^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/;
-        return pattern.test(form.name);
+        return pattern.test(this.form.name);
     }
 
-    validateRollNumber(form) {}
+    validateRollNumber() {
+        for (let key of Object.keys(this.students)) {
+            if (key === this.form.rollNumber) {
+                return false;
+            }
+        }
+        return true;
+    }
     validateCheckInTime(form) {}
     validateCheckOutTime(form) {}
 }

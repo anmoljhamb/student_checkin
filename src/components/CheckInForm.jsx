@@ -18,6 +18,8 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
 
     const errors = {
         name: "A name cannot have any special characters, and needs to be 1 letter and more.",
+        rollNumber:
+            "The Given rollNumber already exists. If used again, it will rewrite the original one.",
     };
 
     const Inputs = [
@@ -67,12 +69,13 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
          */
 
         const tempForm = { ...form, [event.target.name]: event.target.value };
-        const formValidator = new FormValidator(tempForm);
+        const formValidator = new FormValidator(tempForm, studentsRef.current);
         const expr = formValidator.validate(event.target.name);
 
-        console.log("Handling on Changeon", event.target.id, event.target.name);
+        console.log(expr);
 
         if (!expr) {
+            console.log("Invalid For ", event.target.id, event.target.name);
             setInputs((oldInput) => {
                 oldInput[event.target.id].errorMessage =
                     errors[event.target.name];
