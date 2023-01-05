@@ -20,6 +20,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
         name: "A name cannot have any special characters, and needs to be 1 letter and more.",
         rollNumber:
             "The Given rollNumber already exists. If used again, it will rewrite the original one.",
+        checkOutTime: "Checkout Time cannot be less than current time.",
     };
 
     const Inputs = [
