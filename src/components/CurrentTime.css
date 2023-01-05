@@ -1,0 +1,23 @@
+.dateTime {
+    background-color: var(--secondary);
+    width: 30rem;
+    padding: 2rem;
+    border: none;
+    font-size: 3rem;
+    text-align: center;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: auto;
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    color: var(--primary);
+}
+
+.dateTime p {
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: var(--transition);
+    transition-timing-function: linear;
+}

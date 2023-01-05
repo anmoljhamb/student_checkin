@@ -1,9 +1,12 @@
 import "./App.css";
+import { CheckInForm, CurrentTime, StudentsList } from "./components";
 
 function App() {
     return (
         <div className="App">
-            <h1>Hello World!</h1>
+            <CheckInForm />
+            <CurrentTime />
+            {/* <StudentsList /> */}
         </div>
     );
 }
