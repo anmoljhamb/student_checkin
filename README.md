@@ -13,7 +13,7 @@ Create a student attendance system where you can enter the roll number of studen
 
 # Demo
 
-A demo of the app can be found [here](https://google.com)
+A demo of the app can be found [here](https://student-checkin.vercel.app/)
 
 # Screenshots
 
