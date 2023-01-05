@@ -95,10 +95,6 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
         event.preventDefault();
         console.log("Submitted Form: ", form);
 
-        /**
-         * todo add a validator before submitting.
-         */
-
         setStudents(() => {
             studentsRef.current = { ...students, [form.rollNumber]: form };
             return studentsRef.current;
