@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./CheckInForm.css";
 import FormInput from "./FormInput";
+import FormValidator from "../validators";
 
 const CheckInForm = ({ studentsState, studentsRef }) => {
     const [students, setStudents] = studentsState;
@@ -15,9 +16,13 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
 
     const [form, setForm] = useState(initalForm);
 
-    const inputs = [
+    const errors = {
+        name: "A name cannot have any special characters, and needs to be 1 letter and more.",
+    };
+
+    const Inputs = [
         {
-            id: 1,
+            id: 0,
             name: "rollNumber",
             type: "number",
             placeholder: "Roll Number",
@@ -26,7 +31,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
             required: true,
         },
         {
-            id: 2,
+            id: 1,
             name: "name",
             type: "text",
             placeholder: "Student Name",
@@ -35,7 +40,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
             required: true,
         },
         {
-            id: 3,
+            id: 2,
             name: "checkInTime",
             type: "datetime-local",
             placeholder: "Check In Time",
@@ -44,7 +49,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
             required: true,
         },
         {
-            id: 4,
+            id: 3,
             name: "checkOutTime",
             type: "datetime-local",
             placeholder: "Check Out Time",
@@ -54,12 +59,33 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
         },
     ];
 
+    const [inputs, setInputs] = useState(Inputs);
+
     const handleOnChange = (event) => {
         /**
          * todo add a validator on every change, and if wrong, display the errorMessage.
          */
 
-        setForm({ ...form, [event.target.name]: event.target.value });
+        const tempForm = { ...form, [event.target.name]: event.target.value };
+        const formValidator = new FormValidator(tempForm);
+        const expr = formValidator.validate(event.target.name);
+
+        console.log("Handling on Changeon", event.target.id, event.target.name);
+
+        if (!expr) {
+            setInputs((oldInput) => {
+                oldInput[event.target.id].errorMessage =
+                    errors[event.target.name];
+                return oldInput;
+            });
+        } else {
+            setInputs((oldInputs) => {
+                oldInputs[event.target.id].errorMessage = "";
+                return oldInputs;
+            });
+        }
+
+        setForm(tempForm);
     };
 
     const handleOnSubmit = (event) => {
@@ -77,7 +103,6 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
 
         setTimeout(() => {
             // Set a timeout to remove the currently added student when it's time expires.
-
             setStudents(() => {
                 console.log(
                     `Deleting Student ${form.rollNumber} from `,
