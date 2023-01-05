@@ -3,7 +3,9 @@ import { useState } from "react";
 import "./CheckInForm.css";
 import FormInput from "./FormInput";
 
-const CheckInForm = () => {
+const CheckInForm = ({ studentsState }) => {
+    const [students, setStudents] = studentsState;
+
     const initalForm = {
         name: "",
         rollNumber: "",
@@ -53,12 +55,23 @@ const CheckInForm = () => {
     ];
 
     const handleOnChange = (event) => {
+        /**
+         * todo add a validator on every change, and if wrong, display the errorMessage.
+         */
+
         setForm({ ...form, [event.target.name]: event.target.value });
     };
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
-        console.log(form);
+        console.log("Submitted Form: ", form);
+
+        /**
+         * todo add a validator before submitting.
+         */
+
+        setStudents({ ...students, [form.rollNumber]: form });
+
         setForm(initalForm);
     };
 

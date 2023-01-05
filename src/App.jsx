@@ -1,10 +1,17 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import { CheckInForm, CurrentTime, StudentsList } from "./components";
 
 function App() {
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+        console.log("onStudentsChange: ", students);
+    }, [students]);
+
     return (
         <div className="App">
-            <CheckInForm />
+            <CheckInForm studentsState={[students, setStudents]} />
             <CurrentTime />
             {/* <StudentsList /> */}
         </div>
