@@ -4,7 +4,7 @@ import "./CurrentTime.css";
 const CurrentTime = () => {
     const getCurrentTime = () => {
         let time = new Date();
-        time = time.toJSON();
+        time = time.toTimeString();
         return time.slice(0, time.length - 5);
     };
 

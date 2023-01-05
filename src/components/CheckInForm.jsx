@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./CheckInForm.css";
 import FormInput from "./FormInput";
 
-const CheckInForm = ({ studentsState }) => {
+const CheckInForm = ({ studentsState, studentsRef }) => {
     const [students, setStudents] = studentsState;
 
     const initalForm = {
@@ -70,7 +70,24 @@ const CheckInForm = ({ studentsState }) => {
          * todo add a validator before submitting.
          */
 
-        setStudents({ ...students, [form.rollNumber]: form });
+        setStudents(() => {
+            studentsRef.current = { ...students, [form.rollNumber]: form };
+            return studentsRef.current;
+        });
+
+        setTimeout(() => {
+            // Set a timeout to remove the currently added student when it's time expires.
+
+            setStudents(() => {
+                console.log(
+                    `Deleting Student ${form.rollNumber} from `,
+                    studentsRef.current
+                );
+                delete studentsRef.current[form.rollNumber];
+                console.log("Deleted, students: ", studentsRef.current);
+                return { ...studentsRef.current };
+            });
+        }, new Date(form.checkOutTime) - new Date());
 
         setForm(initalForm);
     };
