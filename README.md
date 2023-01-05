@@ -11,7 +11,16 @@ Create a student attendance system where you can enter the roll number of studen
 1. Checkin Time and Checkout Time.
 1. Should be able to check how many students are there in the school right now.
 
-# Run the code
+# Demo
+
+A demo of the app can be found [here](https://google.com)
+
+# Screenshots
+
+![screenshot1](./screenshots/screenshot1.png)
+![screenshot2](./screenshots/screenshot2.png)
+
+# Run the server
 
 ```bash
 npm start
