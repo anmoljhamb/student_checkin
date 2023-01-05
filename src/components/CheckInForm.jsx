@@ -41,7 +41,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
             placeholder: "Check In Time",
             label: "Check In Time",
             errorMessage: "",
-            // required: true,
+            required: true,
         },
         {
             id: 4,
@@ -50,7 +50,7 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
             placeholder: "Check Out Time",
             label: "Check Out Time",
             errorMessage: "",
-            // required: true,
+            required: true,
         },
     ];
 
