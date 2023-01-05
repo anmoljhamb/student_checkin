@@ -65,7 +65,7 @@ const CheckInForm = () => {
     return (
         <div className="studentForm">
             <form onSubmit={handleOnSubmit}>
-                <h1>Register</h1>
+                <h1>Student Check In</h1>
                 {inputs.map((el) => (
                     <FormInput
                         key={el.id}
