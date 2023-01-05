@@ -20,7 +20,9 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
         name: "A name cannot have any special characters, and needs to be 1 letter and more.",
         rollNumber:
             "The Given rollNumber already exists. If used again, it will rewrite the original one.",
-        checkOutTime: "Checkout Time cannot be less than current time.",
+        checkInTime: "CheckIn Time cannot be more than the checkout time.",
+        checkOutTime:
+            "Checkout Time cannot be less than equal to current time.",
     };
 
     const Inputs = [
@@ -65,10 +67,6 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
     const [inputs, setInputs] = useState(Inputs);
 
     const handleOnChange = (event) => {
-        /**
-         * todo add a validator on every change, and if wrong, display the errorMessage.
-         */
-
         const tempForm = { ...form, [event.target.name]: event.target.value };
         const formValidator = new FormValidator(tempForm, studentsRef.current);
         const expr = formValidator.validate(event.target.name);

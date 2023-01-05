@@ -14,6 +14,8 @@ class Validators {
                 return this.validateRollNumber();
             case "checkOutTime":
                 return this.validateCheckOutTime();
+            case "checkInTime":
+                return this.validateCheckInTime();
             default:
                 console.log("default, property not found.", property);
                 return true;
@@ -33,7 +35,11 @@ class Validators {
         }
         return true;
     }
-    validateCheckInTime() {}
+    validateCheckInTime() {
+        const checkOutTime = new Date(this.form.checkOutTime);
+        const checkInTime = new Date(this.form.checkInTime);
+        return checkInTime < checkOutTime;
+    }
     validateCheckOutTime() {
         const formDate = new Date(this.form.checkOutTime);
         return formDate > new Date();
