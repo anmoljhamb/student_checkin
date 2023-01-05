@@ -5,7 +5,7 @@ const CurrentTime = () => {
     const getCurrentTime = () => {
         let time = new Date();
         time = time.toTimeString();
-        return time.slice(0, time.length - 5);
+        return time.slice(0);
     };
 
     const [dateTime, setDateTime] = useState(getCurrentTime());
