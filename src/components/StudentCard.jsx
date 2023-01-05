@@ -1,6 +1,11 @@
 import React from "react";
 
 const StudentCard = ({ student }) => {
+    const convertTime = (time) => {
+        time = new Date(time);
+        return time.toLocaleString();
+    };
+
     return (
         <div className="studentInfo">
             <div className="studentRoll">
@@ -13,11 +18,11 @@ const StudentCard = ({ student }) => {
             </div>
             <div className="checkInTime">
                 <p>Check In Time</p>
-                <span>: {student.checkInTime}</span>
+                <span>: {convertTime(student.checkInTime)}</span>
             </div>
             <div className="checkOutTime">
                 <p>Check Out Time: </p>
-                <span>: {student.checkOutTime}</span>
+                <span>: {convertTime(student.checkOutTime)}</span>
             </div>
         </div>
     );

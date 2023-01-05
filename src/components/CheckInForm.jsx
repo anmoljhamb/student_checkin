@@ -70,7 +70,11 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
     const handleOnChange = (event) => {
         const tempForm = { ...form, [event.target.name]: event.target.value };
         const formValidator = new FormValidator(tempForm, studentsRef.current);
-        const expr = formValidator.validate(event.target.name);
+        let expr = formValidator.validate(event.target.name);
+
+        if (event.target.name == "checkOutTime") {
+            expr = expr || formValidator.validate("checkInTime");
+        }
 
         setDisabled(!expr);
 
@@ -83,6 +87,8 @@ const CheckInForm = ({ studentsState, studentsRef }) => {
             });
         } else {
             setInputs((oldInputs) => {
+                if (event.target.name == "checkOutTime")
+                    oldInputs[2].errorMessage = "";
                 oldInputs[event.target.id].errorMessage = "";
                 return oldInputs;
             });
